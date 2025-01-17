@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance and Billing</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+        }
+
+        .header a:hover {
+            background-color: #007bff;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .billing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .billing-table th, .billing-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .billing-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .billing-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .billing-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #28a745;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+        </div>
+        <h1>Insurance and Billing</h1>
+        <a href="/patient_dashboard/">Back</a>
+    </div>
+
+    <div class="container">
+        <h2>Billing History and Insurance Details</h2>
+        <table class="billing-table">
+            <thead>
+                <tr>
+                    <th>Invoice ID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Insurance Provider</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>INV001</td>
+                    <td>2025-01-10</td>
+                    <td>$200.00</td>
+                    <td>Paid</td>
+                    <td>ABC Insurance</td>
+                    <td><a href="#" style="color: #28a745; text-decoration: none;">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>INV002</td>
+                    <td>2025-01-15</td>
+                    <td>$150.00</td>
+                    <td>Pending</td>
+                    <td>XYZ Insurance</td>
+                    <td><a href="#" style="color: #28a745; text-decoration: none;">Make Payment</a></td>
+                </tr>
+                <tr>
+                    <td>INV003</td>
+                    <td>2025-01-20</td>
+                    <td>$300.00</td>
+                    <td>Rejected</td>
+                    <td>LMN Insurance</td>
+                    <td><a href="#" style="color: #28a745; text-decoration: none;">Contact Support</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#">Previous</a>
+            <span>Page 1 of 1</span>
+            <a href="#">Next</a>
+        </div>
+    </div>
+</body>
+</html>

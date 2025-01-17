@@ -1,0 +1,315 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order & Inventory Management</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            position: relative;
+            font-family: Georgia, serif;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex-grow: 1;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header a:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-block {
+            background-color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .content-block h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .admin-stats {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .admin-stats span {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: #007bff;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .order-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .order-option {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .order-option:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <span class="logo-text">Order & Inventory</span>
+        </div>
+        <h1>Order & Inventory Management</h1>
+        <!-- Back Button -->
+        <a href="/index/" class="back-button">Back</a>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <p class="admin-stats">Total Medical Supplies: <span>1200</span></p>
+            <p class="admin-stats">Total Orders: <span>350</span></p>
+            <p class="admin-stats">Pending Deliveries: <span>50</span></p>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Supplies in Stock</h3>
+                    <p>800</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Supplies Ordered</h3>
+                    <p>400</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Supplies Out of Stock</h3>
+                    <p>100</p>
+                </div>
+            </div>
+
+            <!-- Inventory Data Table -->
+            <h3>Inventory Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item ID</th>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Supplier</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td>Bandage</td>
+                        <td>150</td>
+                        <td>$5</td>
+                        <td>ABC Supplies</td>
+                        <td>In Stock</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Gloves</td>
+                        <td>300</td>
+                        <td>$10</td>
+                        <td>XYZ Medics</td>
+                        <td>In Stock</td>
+                    </tr>
+                    <tr>
+                        <td>103</td>
+                        <td>IV Fluids</td>
+                        <td>50</td>
+                        <td>$15</td>
+                        <td>HealthMed</td>
+                        <td>Low Stock</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Order Management Options -->
+            <div class="order-options">
+                <div class="order-option" onclick="window.location.href='/place-order/'">
+                    <h3>Place Order</h3>
+                    <p>Place a new supply order</p>
+                </div>
+                <div class="order-option" onclick="window.location.href='/manage-orders/'">
+                    <h3>Manage Orders</h3>
+                    <p>Track and manage orders</p>
+                </div>
+                <div class="order-option" onclick="window.location.href='/view-inventory/'">
+                    <h3>View Inventory</h3>
+                    <p>View and manage inventory stock</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

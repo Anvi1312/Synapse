@@ -1,0 +1,307 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory and Reports</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff; 
+            color: #fff;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            text-align: center;
+            flex-grow: 1;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header a:hover {
+            background-color: #1d2124; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-block {
+            background-color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .content-block h2 {
+            font-size: 28px;
+            color: #343a40; 
+            margin-bottom: 20px;
+        }
+
+        .lab-info {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .test-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            text-align: center;
+            width: 250px;
+            display: inline-block;
+        }
+
+        .test-card h3 {
+            color: #007bff; 
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .test-card p {
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .actions {
+            margin-top: 40px;
+        }
+
+        .actions .action-button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .actions .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        .test-results {
+            margin-top: 40px;
+        }
+
+        .test-results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .test-results-table th, .test-results-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .test-results-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .test-results-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .test-results-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; 
+        }
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <span class="logo-text">Laboratory and Reports</span>
+        </div>
+        <h1>Laboratory and Reports Management</h1>
+        <a href="/index/" class="back-button">Back</a>
+
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <h2>Welcome to the Laboratory and Reports Management System</h2>
+            <p class="lab-info">Manage laboratory tests, report generation, and patient test history efficiently.</p>
+
+            <!-- Test Overview Cards -->
+            <div class="test-cards-container">
+                <div class="test-card">
+                    <h3>Blood Test</h3>
+                    <p>Test Type: Diagnostic</p>
+                    <p>Status: Available</p>
+                    <p>Duration: 2 hours</p>
+                </div>
+                <div class="test-card">
+                    <h3>X-Ray</h3>
+                    <p>Test Type: Imaging</p>
+                    <p>Status: Available</p>
+                    <p>Duration: 30 minutes</p>
+                </div>
+                <div class="test-card">
+                    <h3>ECG</h3>
+                    <p>Test Type: Cardiological</p>
+                    <p>Status: Available</p>
+                    <p>Duration: 1 hour</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/schedule-test/" class="action-button">Schedule New Test</a>
+                <a href="/generate-report/" class="action-button">Generate Test Report</a>
+                <a href="/view-test-history/" class="action-button">View Test History</a>
+            </div>
+
+            <div class="test-results">
+                <h3>Recent Test Results</h3>
+                <table class="test-results-table">
+                    <thead>
+                        <tr>
+                            <th>Test ID</th>
+                            <th>Patient Name</th>
+                            <th>Test Type</th>
+                            <th>Status</th>
+                            <th>Test Date</th>
+                            <th>Report</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1001</td>
+                            <td>John Doe</td>
+                            <td>Blood Test</td>
+                            <td>Completed</td>
+                            <td>2025-01-16</td>
+                            <td><a href="#">View Report</a></td>
+                        </tr>
+                        <tr>
+                            <td>1002</td>
+                            <td>Jane Smith</td>
+                            <td>X-Ray</td>
+                            <td>Completed</td>
+                            <td>2025-01-15</td>
+                            <td><a href="#">View Report</a></td>
+                        </tr>
+                        <tr>
+                            <td>1003</td>
+                            <td>Emily Johnson</td>
+                            <td>ECG</td>
+                            <td>Pending</td>
+                            <td>2025-01-17</td>
+                            <td><a href="#">View Report</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

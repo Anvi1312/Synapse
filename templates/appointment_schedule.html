@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header .btn {
+            color: #fff;
+            text-decoration: none;
+            background-color: #0056b3;
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: absolute;
+            right: 20px; 
+            top: 20px; 
+            display: inline-block;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form .btn {
+            background-color: #28a745;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        form .btn:hover {
+            background-color: #218838;
+        }
+
+        form input, form select, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form label {
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Schedule Appointment</h1>
+        <a href="{% url 'patient_dashboard' %}" class="btn">Back to Home</a>
+    </header>
+    <main>
+        <form method="post" class="appointment-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Schedule Appointment</button>
+        </form>
+    </main>
+</body>
+</html>

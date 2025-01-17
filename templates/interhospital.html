@@ -1,0 +1,303 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inter-Hospital Management</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff; 
+            color: #fff;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            text-align: center;
+            flex-grow: 1;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header a:hover {
+            background-color: #007bff; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-block {
+            background-color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .content-block h2 {
+            font-size: 28px;
+            color: #007bff; 
+            margin-bottom: 20px;
+        }
+
+        .hospital-info {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .hospital-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            text-align: center;
+            width: 250px;
+            display: inline-block;
+        }
+
+        .hospital-card h3 {
+            color: #007bff; 
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .hospital-card p {
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .actions {
+            margin-top: 40px;
+        }
+
+        .actions .action-button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .actions .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        .hospital-patient-info {
+            margin-top: 40px;
+        }
+
+        .patient-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .patient-info-table th, .patient-info-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .patient-info-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .patient-info-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .patient-info-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; 
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <span class="logo-text">Inter-Hospital Management</span>
+        </div>
+        <h1>Inter-Hospital Management</h1>
+        <a href="/index/" class="back-button">Back</a>
+
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <p class="hospital-info">Manage inter-hospital collaborations, patient transfers, and shared resources seamlessly.</p>
+
+            <div class="hospital-cards-container">
+                <div class="hospital-card">
+                    <h3>Hospital A</h3>
+                    <p>Location: City A</p>
+                    <p>Specialties: Cardiology, Neurology</p>
+                    <p>Capacity: 200 beds</p>
+                </div>
+                <div class="hospital-card">
+                    <h3>Hospital B</h3>
+                    <p>Location: City B</p>
+                    <p>Specialties: Orthopedics, Pediatrics</p>
+                    <p>Capacity: 150 beds</p>
+                </div>
+                <div class="hospital-card">
+                    <h3>Hospital C</h3>
+                    <p>Location: City C</p>
+                    <p>Specialties: Oncology, Emergency Care</p>
+                    <p>Capacity: 250 beds</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/transfer-patient/" class="action-button">Transfer Patient</a>
+                <a href="/share-resources/" class="action-button">Share Resources</a>
+                <a href="/view-patient-transfer-history/" class="action-button">View Transfer History</a>
+            </div>
+
+            <div class="hospital-patient-info">
+                <h3>Patients in Transfer</h3>
+                <table class="patient-info-table">
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Patient Name</th>
+                            <th>Transfer From</th>
+                            <th>Transfer To</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12345</td>
+                            <td>John Doe</td>
+                            <td>Hospital A</td>
+                            <td>Hospital B</td>
+                            <td>In Transit</td>
+                        </tr>
+                        <tr>
+                            <td>67890</td>
+                            <td>Jane Smith</td>
+                            <td>Hospital B</td>
+                            <td>Hospital C</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>11223</td>
+                            <td>Emily Johnson</td>
+                            <td>Hospital C</td>
+                            <td>Hospital A</td>
+                            <td>Pending</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

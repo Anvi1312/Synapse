@@ -1,0 +1,278 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bed Management</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff; 
+            color: #fff;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+            text-align: center;
+            flex-grow: 1;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header a:hover {
+            background-color: #0056b3; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-block {
+            background-color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .content-block h2 {
+            font-size: 28px;
+            color: #007bff; 
+            margin-bottom: 20px;
+        }
+
+        .bed-card {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            text-align: center;
+            width: 250px;
+            display: inline-block;
+        }
+
+        .bed-card h3 {
+            color: #007bff; 
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .bed-card p {
+            font-size: 16px;
+            color: #6c757d;
+        }
+
+        .actions {
+            margin-top: 40px;
+        }
+
+        .actions .action-button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .actions .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        .beds-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .beds-table th, .beds-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .beds-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .beds-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .beds-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <span class="logo-text">Bed Management</span>
+        </div>
+        <h1>Bed Management</h1>
+        <a href="/index/">Back</a>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <div class="bed-cards-container">
+                <div class="bed-card">
+                    <h3>Ward 1</h3>
+                    <p>Total Beds: 20</p>
+                    <p>Available: 5</p>
+                    <p>Occupied: 15</p>
+                </div>
+                <div class="bed-card">
+                    <h3>Ward 2</h3>
+                    <p>Total Beds: 25</p>
+                    <p>Available: 10</p>
+                    <p>Occupied: 15</p>
+                </div>
+                <div class="bed-card">
+                    <h3>ICU</h3>
+                    <p>Total Beds: 10</p>
+                    <p>Available: 2</p>
+                    <p>Occupied: 8</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="/allocate-bed/" class="action-button">Allocate Bed</a>
+                <a href="/view-bed-status/" class="action-button">View Bed Status</a>
+                <a href="/discharge-patient/" class="action-button">Discharge Patient</a>
+            </div>
+
+            <br>
+            <br>
+            <div class="beds-management">
+                <h3>Current Bed Status</h3>
+                <table class="beds-table">
+                    <thead>
+                        <tr>
+                            <th>Bed ID</th>
+                            <th>Ward</th>
+                            <th>Status</th>
+                            <th>Patient Name</th>
+                            <th>Admission Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>101</td>
+                            <td>Ward 1</td>
+                            <td>Occupied</td>
+                            <td>John Doe</td>
+                            <td>2025-01-15</td>
+                            <td><a href="#">View Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>Ward 2</td>
+                            <td>Available</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td><a href="#">Allocate</a></td>
+                        </tr>
+                        <tr>
+                            <td>103</td>
+                            <td>ICU</td>
+                            <td>Occupied</td>
+                            <td>Jane Smith</td>
+                            <td>2025-01-14</td>
+                            <td><a href="#">View Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .header a {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: white;
+            color: #007bff;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .header a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .container {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-bottom: 40px;
+            font-size: 26px;
+            color: #333;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .dashboard-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            width: 250px;
+            text-align: center;
+            flex: 1 1 calc(33% - 40px);
+            max-width: 300px;
+        }
+
+        .dashboard-item:hover {
+            transform: scale(1.05);
+        }
+
+        .icon {
+            font-size: 50px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <h1>Patient Dashboard</h1>
+        </div>
+        <a href="/role-selection/">Logout</a>
+    </div>
+
+    <div class="container">
+        <h2>Welcome</h2>
+
+        <div class="dashboard">
+            <div class="dashboard-item">
+                <div class="icon">📂</div>
+                <h3>Medical Records</h3>
+                <a href="/medical_records/" class="button">View Records</a>
+            </div>
+
+            <div class="dashboard-item">
+                <div class="icon">📅</div>
+                <h3>Appointments</h3>
+                <a href="/appointment_booking/" class="button">Schedule</a>
+            </div>
+
+            <div class="dashboard-item">
+                <div class="icon">📊</div>
+                <h3>Health Trends & Insights</h3>
+                <a href="/trends/" class="button">View</a>
+            </div>
+
+            <div class="dashboard-item">
+                <div class="icon">🧪</div>
+                <h3>Lab Test Bookings</h3>
+                <a href="{% url 'patient_lab' %}" class="button">Book</a>
+            </div>
+
+            <div class="dashboard-item">
+                <div class="icon">💳</div>
+                <h3>Insurance & Billing</h3>
+                <a href="{% url 'insurance' %}" class="button">View</a>
+            </div>
+
+            <div class="dashboard-item">
+                <div class="icon">🏥</div>
+                <h3>Nearby Hospitals</h3>
+                <a href="{% url 'map' %}" class="button">View</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

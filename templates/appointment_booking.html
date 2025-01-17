@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book and View Appointments</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+        }
+
+        .header a:hover {
+            background-color: #007bff;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .appointments-table, .booking-form {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .appointments-table th, .appointments-table td, .booking-form td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .appointments-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .appointments-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .appointments-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .booking-form input, .booking-form select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .booking-form button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .booking-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+        </div>
+        <h1>Book and View Appointments</h1>
+        <a href="/patient_dashboard/">Back</a>
+    </div>
+
+    <div class="container">
+        <h2>Book New Appointment</h2>
+        <form class="booking-form" method="POST" action="/book_appointment/">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label for="doctor">Doctor Name</label></td>
+                    <td>
+                        <select id="doctor" name="doctor" required>
+                            <option value="">Select a Doctor</option>
+                            <option value="Dr. Smith">Dr. Smith</option>
+                            <option value="Dr. Jane Doe">Dr. Jane Doe</option>
+                            <option value="Dr. Allen">Dr. Allen</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="date">Date</label></td>
+                    <td><input type="date" id="date" name="date" required></td>
+                </tr>
+                <tr>
+                    <td><label for="time">Time</label></td>
+                    <td><input type="time" id="time" name="time" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit">Book Appointment</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <h2>Upcoming and Past Appointments</h2>
+        <table class="appointments-table">
+            <thead>
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Doctor Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>101</td>
+                    <td>Dr. Smith</td>
+                    <td>2025-01-18</td>
+                    <td>10:00 AM</td>
+                    <td>Scheduled</td>
+                    <td><a href="#" style="color: #007bff; text-decoration: none;">Reschedule</a></td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Dr. Jane Doe</td>
+                    <td>2025-01-20</td>
+                    <td>2:30 PM</td>
+                    <td>Completed</td>
+                    <td><a href="#" style="color: #007bff; text-decoration: none;">View Details</a></td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>Dr. Allen</td>
+                    <td>2025-01-22</td>
+                    <td>1:00 PM</td>
+                    <td>Cancelled</td>
+                    <td><a href="#" style="color: #007bff; text-decoration: none;">Rebook</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#">Previous</a>
+            <span>Page 1 of 1</span>
+            <a href="#">Next</a>
+        </div>
+    </div>
+</body>
+</html>

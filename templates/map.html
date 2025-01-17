@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Hospitals</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .back-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            align-self: flex-start;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        .content-container {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .list-container {
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            height: 100%;
+            position: relative;
+        }
+
+        .list-container h2 {
+            color: #007bff;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .hospital-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+
+        .hospital-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .hospital-item h3 {
+            margin: 0;
+            color: #007bff;
+            font-size: 18px;
+        }
+
+        .hospital-item p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        #map {
+            flex-grow: 1;
+            height: 100%;
+        }
+
+        .highlight {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="back-button" onclick="window.history.back()">Back</button>
+
+    <div class="content-container">
+        <div class="list-container">
+            <h2>Nearby Hospitals</h2>
+
+            <div class="hospital-item" id="hospital-1" onclick="highlightMarker(0)">
+                <h3>Hospital A</h3>
+                <p><strong>Address:</strong> 123 Main St, London</p>
+                <p><strong>Phone:</strong> 123-456-7890</p>
+            </div>
+
+            <div class="hospital-item" id="hospital-2" onclick="highlightMarker(1)">
+                <h3>Hospital B</h3>
+                <p><strong>Address:</strong> 456 High St, London</p>
+                <p><strong>Phone:</strong> 098-765-4321</p>
+            </div>
+
+            <div class="hospital-item" id="hospital-3" onclick="highlightMarker(2)">
+                <h3>Hospital C</h3>
+                <p><strong>Address:</strong> 789 Elm St, London</p>
+                <p><strong>Phone:</strong> 234-567-8901</p>
+            </div>
+        </div>
+
+        <div id="map"></div>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13); // Example coordinates (London)
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var hospitals = [
+            {name: 'Hospital A', lat: 51.505, lon: -0.09, address: '123 Main St, London', phone: '123-456-7890'},
+            {name: 'Hospital B', lat: 51.515, lon: -0.1, address: '456 High St, London', phone: '098-765-4321'},
+            {name: 'Hospital C', lat: 51.525, lon: -0.12, address: '789 Elm St, London', phone: '234-567-8901'}
+        ];
+
+        var markers = [];
+
+        hospitals.forEach(function(hospital, index) {
+            var marker = L.marker([hospital.lat, hospital.lon])
+                .addTo(map)
+                .bindPopup(function() {
+                    return `
+                        <div>
+                            <h3>${hospital.name}</h3>
+                            <p><strong>Address:</strong> ${hospital.address}</p>
+                            <p><strong>Phone:</strong> ${hospital.phone}</p>
+                        </div>
+                    `;
+                });
+            markers.push(marker); 
+        });
+
+        function highlightMarker(index) {
+            document.querySelectorAll('.hospital-item').forEach(function(item) {
+                item.classList.remove('highlight');
+            });
+
+            document.getElementById('hospital-' + (index + 1)).classList.add('highlight');
+
+            map.panTo(markers[index].getLatLng());
+            markers[index].openPopup();
+        }
+    </script>
+
+</body>
+</html>

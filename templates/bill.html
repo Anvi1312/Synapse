@@ -1,0 +1,317 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial & Billing Management</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff; 
+            color: #fff;
+            position: relative;
+            font-family: Georgia, serif;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex-grow: 1;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header a:hover {
+            background-color: #0056b3; 
+        }
+
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content-block {
+            background-color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .content-block h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .financial-stats {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .financial-stats span {
+            font-weight: bold;
+            color: #007bff; 
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: #007bff; 
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card p {
+            font-size: 18px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #007bff; 
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff; 
+            border: 1px solid #007bff; 
+            border-radius: 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff; 
+            color: white;
+        }
+
+        .order-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .order-option {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+        }
+
+        .order-option:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <span class="logo-text">Financial & Billing</span>
+        </div>
+        <h1>Financial & Billing Management</h1>
+        <a href="/index/" class="back-button">Back</a>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <p class="financial-stats">Total Income: <span>$500,000</span></p>
+            <p class="financial-stats">Total Expenses: <span>$300,000</span></p>
+            <p class="financial-stats">Pending Payments: <span>$50,000</span></p>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Total Bills Generated</h3>
+                    <p>1200</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Payments Received</h3>
+                    <p>$250,000</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Payments</h3>
+                    <p>$50,000</p>
+                </div>
+            </div>
+
+            <!-- Billing Data Table -->
+            <h3>Billing Records</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bill ID</th>
+                        <th>Patient Name</th>
+                        <th>Amount</th>
+                        <th>Payment Status</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td>John Doe</td>
+                        <td>$300</td>
+                        <td>Paid</td>
+                        <td>2025-01-20</td>
+                        <td><a href="/view-bill/1001">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>1002</td>
+                        <td>Jane Smith</td>
+                        <td>$500</td>
+                        <td>Pending</td>
+                        <td>2025-02-01</td>
+                        <td><a href="/view-bill/1002">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>1003</td>
+                        <td>Sam Wilson</td>
+                        <td>$250</td>
+                        <td>Paid</td>
+                        <td>2025-01-25</td>
+                        <td><a href="/view-bill/1003">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="order-options">
+                <div class="order-option" onclick="window.location.href='/generate-bill/'">
+                    <h3>Generate Bill</h3>
+                    <p>Create a new bill for a patient</p>
+                </div>
+                <div class="order-option" onclick="window.location.href='/manage-payments/'">
+                    <h3>Manage Payments</h3>
+                    <p>Track and update payment status</p>
+                </div>
+                <div class="order-option" onclick="window.location.href='/view-financial-reports/'">
+                    <h3>Financial Reports</h3>
+                    <p>Generate detailed financial reports</p>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

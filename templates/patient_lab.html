@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Reports</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            position: relative;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 20px;
+        }
+
+        .header a:hover {
+            background-color: #007bff;
+        }
+
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        .reports-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .reports-table th, .reports-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .reports-table th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .reports-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .reports-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 12px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+
+        .pagination a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .view-report-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .view-report-btn:hover {
+            background-color: #218838;
+        }
+
+        .download-report-btn {
+            background-color: #ffc107;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .download-report-btn:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+        </div>
+        <h1>Laboratory and Reports</h1>
+        <a href="/patient_dashboard/">Back</a>
+    </div>
+
+    <div class="container">
+        <h2>Your Laboratory Reports</h2>
+        <table class="reports-table">
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Test Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LR001</td>
+                    <td>Blood Test</td>
+                    <td>2025-01-15</td>
+                    <td>Completed</td>
+                    <td>
+                        <a href="/patient/report_detail/1" class="view-report-btn">View Report</a>
+                        <a href="/patient/download_report/1" class="download-report-btn">Download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>LR002</td>
+                    <td>X-ray</td>
+                    <td>2025-01-17</td>
+                    <td>Pending</td>
+                    <td>
+                        <a href="/patient/report_detail/2" class="view-report-btn">View Report</a>
+                        <a href="/patient/download_report/2" class="download-report-btn">Download</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>LR003</td>
+                    <td>Urine Test</td>
+                    <td>2025-01-19</td>
+                    <td>Completed</td>
+                    <td>
+                        <a href="/patient/report_detail/3" class="view-report-btn">View Report</a>
+                        <a href="/patient/download_report/3" class="download-report-btn">Download</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#">Previous</a>
+            <span>Page 1 of 1</span>
+            <a href="#">Next</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            position: relative;
+            font-family: Georgia, serif;
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            left: 20px;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            text-align: center;
+            flex-grow: 1;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header a:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .dashboard-block {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 10px;
+        }
+
+        .dashboard-block:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .block-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .block-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .blocks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .blocks-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blocks-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 10px;
+            }
+
+            .dashboard-block {
+                padding: 15px;
+            }
+
+            .block-icon {
+                font-size: 35px;
+            }
+
+            .block-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <div class="logo-text">Synapse</div>
+        </div>
+
+        <h1>Hospital Management Dashboard</h1>
+        <a href="{% url 'logout' %}">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="blocks-container">
+            <div class="dashboard-block">
+                <div class="block-icon">👩‍⚕️</div>
+                <a href="/admin_panel/" class="block-title">Admin Panel</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">📝</div>
+                {% comment %} <div class="block-title">Registration</div> {% endcomment %}
+                <a href="/patient-registration/" class="block-title">Registration</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">⚕️</div>
+                <a href="{% url 'clinical' %}" class="block-title">Clinical</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">🏥</div>
+                <a href="/in_patient/" class="block-title">In-Patient</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">💉</div>
+                <a href="/out_patient/" class="block-title">Out Patient</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">📦</div>
+                <a href="/order/" class="block-title">Order and Inventory</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">😷</div>
+                <a href="/ot/" class="block-title">Operation Theatre</a>
+            </div>
+
+
+            <div class="dashboard-block">
+                <div class="block-icon">🛏️</div>
+                {% comment %} <div class="block-title">Bed Management</div> {% endcomment %}
+                <a href="/bed-management/" class="block-title">Bed Management</a>
+
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">⏳</div>
+                <a href="/queue-management/" class="block-title">Queue Management</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">📅</div>
+                {% comment %} <div class="block-title">Appointment Management</div> {% endcomment %}
+                <a href="/appointment-management/" class="block-title">Appointment Management</a>
+            </div>
+
+            <div class="dashboard-block">
+                <a href="/patient-list/" class="block-title">
+                    <div class="block-icon">📂</div>
+                    <div> Electronic Health Record </div>
+                </a>
+                {% comment %} <div class="block-title">Electronic Health Record</div> {% endcomment %}
+
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">💊</div>
+                <a href="/pharmacy/" class="block-title">Pharmacy and Consumable</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">💰</div>
+                <a href="/bill/" class="block-title">Financial and Billing</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">📡</div>
+                <a href="/interhospital/" class="block-title">Inter-Hospital Communication</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">🔬</div>
+                <a href="/lab/" class="block-title">Laboratory and Reports</a>
+            </div>
+
+            <div class="dashboard-block">
+                <div class="block-icon">🩻</div>
+                <a href="/radiology/" class="block-title">Radiology</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

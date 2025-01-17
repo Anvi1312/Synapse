@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #003366;
+            border-bottom: 2px solid #004080;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #004080; 
+        }
+
+        .section-buttons {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .section-buttons a {
+            flex: 1 1 calc(33.333% - 15px); 
+            padding: 15px;
+            text-align: center;
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .section-buttons .add-button {
+            background: linear-gradient(135deg, #007bff, #0056b3); 
+        }
+
+        .section-buttons .add-button:hover {
+            background: linear-gradient(135deg, #0056b3, #004080); 
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .section-buttons .view-button {
+            background: linear-gradient(135deg, #003366, #00274d); 
+        }
+
+        .section-buttons .view-button:hover {
+            background: linear-gradient(135deg, #00274d, #001a33); 
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        a.back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #003366; 
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        a.back-button:hover {
+            background-color: #00274d; 
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Patient Details</h1>
+        <p><strong>Name:</strong> {{ patient.first_name }} {{ patient.last_name }}</p>
+        <p><strong>Birth Name:</strong> {{ patient.birth_first_name }} {{ patient.birth_last_name }}</p>
+        <p><strong>Date of Birth:</strong> {{ patient.dob }}</p>
+        <p><strong>Gender Identity:</strong> {{ patient.gender_identity }}</p>
+        <p><strong>Sex:</strong> {{ patient.sex }}</p>
+        <p><strong>Sexual Orientation:</strong> {{ patient.sexual_orientation }}</p>
+        <p><strong>Marital Status:</strong> {{ patient.marital_status }}</p>
+        <p><strong>Address:</strong> {{ patient.address }}</p>
+        <p><strong>City:</strong> {{ patient.city }}</p>
+        <p><strong>State:</strong> {{ patient.state }}</p>
+        <p><strong>Postal Code:</strong> {{ patient.postal_code }}</p>
+        <p><strong>Country:</strong> {{ patient.country }}</p>
+        <p><strong>Mobile Number:</strong> {{ patient.mobile_number }}</p>
+        <p><strong>Emergency Contact:</strong> {{ patient.emergency_contact }}</p>
+        <p><strong>Mother's Name:</strong> {{ patient.mother_name }}</p>
+        <p><strong>Father's Name:</strong> {{ patient.father_name }}</p>
+        <p><strong>Email:</strong> {{ patient.email }}</p>
+        <p><strong>Aadhaar Number:</strong> {{ patient.aadhaar_number }}</p>
+
+        {% comment %} <div class="section-buttons">
+            <a href="{% url 'add_medical_problem' patient.aadhaar_number %}" class="add-button">Add Medical Problem</a>
+            <a href="{% url 'view_medical_problems' patient.aadhaar_number %}" class="view-button">View Medical Problems</a>
+            <a href="{% url 'add_allergy' patient.aadhaar_number %}" class="add-button">Add Allergy</a>
+            <a href="{% url 'view_allergies' patient.aadhaar_number %}" class="view-button">View Allergies</a>
+            <a href="{% url 'add_medication' patient.aadhaar_number %}" class="add-button">Add Medication Record</a>
+            <a href="{% url 'view_medications' patient.aadhaar_number %}" class="view-button">View Medication Records</a>
+        </div> {% endcomment %}
+
+        <a href="{% url 'patient_list' %}" class="back-button">Back to Patient List</a>
+    </div>
+</body>
+</html>

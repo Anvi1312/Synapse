@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-Patient Details - Synapse Healthcare</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            font-family: Georgia, serif; 
+        }
+
+        .header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            width: 50px; 
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+            font-family: Georgia, serif;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .header a:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .dashboard-block {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 10px;
+        }
+
+        .dashboard-block:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .block-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .block-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .blocks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .blocks-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blocks-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 10px;
+            }
+
+            .dashboard-block {
+                padding: 15px;
+            }
+
+            .block-icon {
+                font-size: 35px;
+            }
+
+            .block-title {
+                font-size: 16px;
+            }
+        }
+
+        .patient-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .patient-table th, .patient-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .patient-table th {
+            background-color: #f4f4f4;
+        }
+
+        .patient-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .back-button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: 1px solid #fff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            position: absolute;
+            right: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-container">
+            <img src="{% static 'images/Logo1.png' %}" alt="Synapse Healthcare Logo" class="logo">
+            <div class="logo-text">Synapse</div>
+        </div>
+        
+        <h1 style="margin: 10px auto;">In-Patient Details</h1>
+        <a href="/index/" class="back-button">Back</a>
+
+    </div>
+
+    <div class="container">
+        <table class="patient-table">
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Age</th>
+                    <th>Room Number</th>
+                    <th>Admission Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John Doe</td>
+                    <td>45</td>
+                    <td>101</td>
+                    <td>2024-09-15</td>
+                    <td>Admitted</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>38</td>
+                    <td>102</td>
+                    <td>2024-09-10</td>
+                    <td>Under Observation</td>
+                </tr>
+                <tr>
+                    <td>Michael Johnson</td>
+                    <td>60</td>
+                    <td>103</td>
+                    <td>2024-09-12</td>
+                    <td>Admitted</td>
+                </tr>
+                <tr>
+                    <td>Emily Davis</td>
+                    <td>29</td>
+                    <td>104</td>
+                    <td>2024-09-18</td>
+                    <td>Discharged</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
