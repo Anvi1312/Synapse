@@ -1,16 +1,8 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "manage.py",
-        "use": "@vercel/python"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "manage.py"
-      }
-    ]
-  }
-  
+  "builds": [
+    { "src": "templates/**", "use": "@vercel/static-build" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "templates/index.html" }
+  ]
+}
